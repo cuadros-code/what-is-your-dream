@@ -7,7 +7,7 @@ export const DREAMS = [
     position: {
       desktop: {
         top: "18%",
-        left: "-10%",
+        left: "10%",
       },
     },
   },
@@ -40,7 +40,7 @@ export const DREAMS = [
     position: {
       desktop: {
         top: "52%",
-        left: "-15%",
+        left: "15%",
       },
     },
   },

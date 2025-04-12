@@ -6,27 +6,26 @@ import DreamItem from './DreamItem.astro';
 
 <div id="container">
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<div class="dreams">
+		{
+			DREAMS.map((dream) => (
+				<DreamItem 
+					description={dream.description}
+					info={dream.info}
+					position = {{
+						desktop: { top: dream.position.desktop.top, left: dream.position.desktop.left },
+					}}
+				/>
+			))
+		}
+	</div>
 	<main>
 		<section id="hero">
 			<h1 id="title">What's your dream?</h1>
 			<button class="button">
 				Share your dream
 			</button>
-
-			<div class="dreams">
-
-				{
-					DREAMS.map((dream) => (
-						<DreamItem 
-							description={dream.description}
-							info={dream.info}
-							position = {{
-								desktop: { top: dream.position.desktop.top, left: dream.position.desktop.left },
-							}}
-						/>
-					))
-				}
-			</div>
+			
 
 		</section>
 	</main>
@@ -45,20 +44,23 @@ import DreamItem from './DreamItem.astro';
 	}
 
 	#title {
-		font-size: 8em;
-		align-self: center;
+		font-size: 7em;
 		margin: 0;
+		text-align: center;
+		z-index: 999;
 	}
 
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		display: flex;
 		height: 100%;
+		position: relative;
 	}
 
 	main {
 		height: 100%;
+		width: 100%;
 		display: flex;
-		justify-content: center;
 	}
 
 	#hero {
@@ -68,7 +70,8 @@ import DreamItem from './DreamItem.astro';
 		justify-content: center;
 		gap: 32px;
 		padding: 16px;
-		position: relative;
+		width: 100%;
+		
 	}
 
 	.button {
@@ -90,40 +93,14 @@ import DreamItem from './DreamItem.astro';
 		box-shadow: none;
 	}
 
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
+	@media (width <= 768px) {
+		#title {
+			font-size: 4em;
+		}
+
+		.dreams {
+			width: 100%;
 		}
 	}
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
-		}
-	}
+	
 </style>
