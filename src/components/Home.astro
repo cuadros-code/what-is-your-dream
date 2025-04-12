@@ -2,13 +2,19 @@
 import background from '../assets/background.svg';
 import { DREAMS } from '../mocks/dreams';
 import DreamItem from './DreamItem.astro';
-import supabase from '@supabase/supabase-js'
 ---
 
-<script> 
+<script>
+	import { supabase } from "../config/supabase.config"
 
-	function authUser() {
-		
+	const auth = document.querySelector('[auth-session]')
+
+	auth?.addEventListener('click', () => authUser())
+
+	async function authUser() {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+			provider: 'google'
+		})
 	}
 
 </script>
@@ -31,11 +37,9 @@ import supabase from '@supabase/supabase-js'
 	<main>
 		<section id="hero">
 			<h1 id="title">What's your dream?</h1>
-			<button class="button">
+			<button class="button" auth-session>
 				Share your dream
 			</button>
-			
-
 		</section>
 	</main>
 </div>

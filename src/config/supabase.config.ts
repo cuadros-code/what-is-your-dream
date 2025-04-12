@@ -1,3 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
+const SUPABASE_URL = `${import.meta.env.PUBLIC_SUPABASE_URL}`
+const SUPABASE_KEY = `${import.meta.env.PUBLIC_SUPABASE_KEY}`
+
+export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
