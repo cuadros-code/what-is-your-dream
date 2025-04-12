@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.8",
+    "@supabase/supabase-js": "^2.49.4",
     "astro": "^5.6.1",
     "nanostores": "^1.0.0",
     "preact": "^10.26.5"
